@@ -16,7 +16,7 @@ export const listNotes = () => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`,
             },
         };
-        const { data } = await axios.get('/api/notes', config);
+        const { data } = await axios.get('https://noteskeeper-backend.onrender.com/api/notes', config);
 
         dispatch({
             type: NOTES_LIST_SUCCESS,
@@ -47,7 +47,7 @@ export const createNoteAction = (title, content, category) => async (dispatch, g
             },
         };
         const { data } = await axios.post(
-            '/api/notes/create',
+            'https://noteskeeper-backend.onrender.com/api/notes/create',
             { title, content, category },
             config
         );
@@ -82,7 +82,7 @@ export const updateNoteAction = (id,title, content, category) => async (dispatch
             },
         };
         const { data } = await axios.put(
-            `/api/notes/${id}`,
+            `https://noteskeeper-backend.onrender.com/api/notes/${id}`,
             { title, content, category },
             config
         );
@@ -117,7 +117,7 @@ export const deleteNoteAction = (id) => async (dispatch, getState) => {
             },
         };
         const { data } = await axios.delete(
-            `/api/notes/${id}`,
+            `https://noteskeeper-backend.onrender.com/api/notes/${id}`,
             config
         );
 
