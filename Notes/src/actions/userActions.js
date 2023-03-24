@@ -10,7 +10,7 @@ export const login = (email, password) => async (dispatch) => {
             },
         };
         const { data } = await axios.post(
-            " /api/users/login",
+            "https://noteskeeper-backend.onrender.com/api/users/login",
             {
                 email,
                 password,
@@ -47,7 +47,7 @@ export const register = (name, email, password, pic) => async (dispatch) =>
                },
               };
               const { data } = await axios.post(
-                " /api/users",
+                "https://noteskeeper-backend.onrender.com/api/users",
                 {
                     name,
                     pic,
@@ -88,7 +88,7 @@ export const updateProfile = (user) => async (dispatch,getState) =>
                },
               };
               const { data } = await axios.post(
-                " /api/users/profile",user,config
+                "https://noteskeeper-backend.onrender.com/api/users/profile",user,config
         );
         dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
