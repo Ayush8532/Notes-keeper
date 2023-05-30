@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const noteRoutes = require("./routes/noteRoutes");
+const cors = require("cors");
 const { notFound, errorHandler } = require("./middlewares/errorMiddlewares");
 const path = require("path");
 
@@ -11,6 +12,13 @@ dotenv.config();
 connectDB();
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL],
+    method: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.use("/api/users", userRoutes);
 app.use("/api/notes", noteRoutes);
